@@ -1,6 +1,7 @@
 import data from './data.json';
 import React, { useState } from 'react';
 import Column from './components/Column';
+import Toolbar from './components/Toolbar';
 import './App.css';
 
 const monthNames = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
@@ -10,6 +11,7 @@ function App() {
 
   return (
     <>
+      <Toolbar type={type} setType={setType} />
       <div className="chart">
         {
           monthNames.map(month => {
