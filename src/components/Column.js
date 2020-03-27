@@ -33,7 +33,7 @@ const Column = ({ monthData, type, monthName }) => {
       }}      
       onMouseOver={() => setIsHover(true)} 
       onMouseLeave={() => setIsHover(false)}>
-        <Label text={`${monthName} ${heights[type] && heights[type].toFixed(2)}`} visible={isHover}/>
+        <Label text={`${monthName} ${heights[type] && heights[type].toFixed(2)}°C`} visible={isHover}/>
     </div>
   );
 };
