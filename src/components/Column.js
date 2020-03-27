@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { MIN, MAX, AVERAGE, MEDIAN, HEIGHT_MULTIPLIER } from '../constants';
 import Label from './Label';
 import PropTypes from 'prop-types';
 
-const Column = ({ monthData, type, month }) => {
+const Column = ({ monthData, type, monthName }) => {
   const [ heights, setHeights ] = useState({});
   const [ isHover, setIsHover] = useState(false);
 
@@ -16,10 +17,10 @@ const Column = ({ monthData, type, month }) => {
       : temperatures[Math.floor(halfOfLength - 1)]
 
     setHeights({
-      min: Math.min(...temperatures),
-      max: Math.max(...temperatures),
-      average,
-      median
+      [MIN]: Math.min(...temperatures),
+      [MAX]: Math.max(...temperatures),
+      [AVERAGE]: average,
+      [MEDIAN]: median
     })
   }, [monthData]);
 
@@ -27,12 +28,12 @@ const Column = ({ monthData, type, month }) => {
     <div 
       className='column'
       style={{ 
-        height: Math.abs(heights[type] * 10) || 0, 
-        bottom: heights[type] > 0 ? 'auto' : heights[type] * 10 || 0
+        height: Math.abs(heights[type] * HEIGHT_MULTIPLIER) || 0, 
+        bottom: heights[type] > 0 ? 'auto' : heights[type] * HEIGHT_MULTIPLIER || 0
       }}      
       onMouseOver={() => setIsHover(true)} 
       onMouseLeave={() => setIsHover(false)}>
-        <Label text={`${month} ${heights[type] && heights[type].toFixed(2)}`} visible={isHover}/>
+        <Label text={`${monthName} ${heights[type] && heights[type].toFixed(2)}`} visible={isHover}/>
     </div>
   );
 };
@@ -43,7 +44,7 @@ Column.propTypes = {
     value: PropTypes.string.isRequired
   })),
   type: PropTypes.string.isRequired,
-  month: PropTypes.string.isRequired
+  monthName: PropTypes.string.isRequired
 };
 
 export default Column;

@@ -1,10 +1,10 @@
 .chart {
-  padding-top: 65px;
-  height: calc(50vh - 85px);
-  padding-bottom: calc(50vh - 25px);
   display: flex;
   justify-content: space-evenly;
   align-items: flex-end;
+  padding-top: 65px;
+  height: calc(50vh - 85px);
+  padding-bottom: calc(50vh - 25px);
   overflow-x: hidden;
 }
 

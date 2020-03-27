@@ -2,12 +2,12 @@ import data from './data.json';
 import React, { useState } from 'react';
 import Column from './components/Column';
 import Toolbar from './components/Toolbar';
+import monthNames from './monthNames';
+import { MIN } from './constants';
 import './App.css';
 
-const monthNames = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-
 function App() {
-  const [ type, setType ] = useState('min');
+  const [ type, setType ] = useState(MIN);
 
   return (
     <>
@@ -15,8 +15,8 @@ function App() {
       <div className="chart">
         {
           monthNames.map(month => {
-            const monthData = [ ...data.filter(day => day.date.includes(month)) ];
-            return <Column key={month} monthData={monthData} type={type} month={month}/>
+            const monthData = [ ...data.filter(day => day.date.includes(month.genitive)) ];
+            return <Column key={month.nominative} monthData={monthData} type={type} monthName={month.nominative}/>
           })
         }
       </div>
