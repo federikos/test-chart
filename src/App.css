@@ -1,7 +1,11 @@
 .chart {
+  padding-top: 65px;
+  height: calc(50vh - 65px);
+  padding-bottom: calc(50vh - 25px);
   display: flex;
   justify-content: space-evenly;
   align-items: flex-end;
+  overflow-x: hidden;
 }
 
 .column {

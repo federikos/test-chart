@@ -20,7 +20,7 @@ const Column = ({ monthData, type, month }) => {
       average,
       median
     })
-  }, []);
+  }, [monthData]);
 
   return (
     <div className='column'
@@ -32,7 +32,7 @@ const Column = ({ monthData, type, month }) => {
       onMouseLeave={() => setIsHover(false)} >
       {
         isHover 
-          ? <div style={{position: 'absolute', top: -45, zIndex: 1}}>{`${month} ${heights[type].toFixed(2)}`}</div> 
+          ? <div style={{position: 'absolute', top: -45, zIndex: 2}}>{`${month} ${heights[type].toFixed(2)}`}</div> 
           : null
       }
     </div>
@@ -40,7 +40,12 @@ const Column = ({ monthData, type, month }) => {
 };
 
 Column.propTypes = {
-  
+  monthData: PropTypes.arrayOf(PropTypes.shape({
+    date: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired
+  })),
+  type: PropTypes.string.isRequired,
+  month: PropTypes.string.isRequired
 };
 
 export default Column;

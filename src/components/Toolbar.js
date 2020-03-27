@@ -15,7 +15,8 @@ const Toolbar = ({type, setType}) => {
 };
 
 Toolbar.propTypes = {
-  
+  type: PropTypes.string.isRequired,
+  setType: PropTypes.func.isRequired
 };
 
 export default Toolbar;
