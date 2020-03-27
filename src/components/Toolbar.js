@@ -6,9 +6,9 @@ const types = ['min', 'max', 'average', 'median'];
 const Toolbar = ({type, setType}) => {
   const handleClick = e => setType(e.target.value);
   return (
-    <div>
+    <div className='toolbar'>
       {
-        types.map(type => <button key={type} value={type} onClick={handleClick}>{type}</button>)
+        types.map(t => <button className={t === type ? 'active-btn' : null} key={t} value={t} onClick={handleClick}>{t}</button>)
       }
     </div>
   );
