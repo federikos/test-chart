@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Label from './Label';
 import PropTypes from 'prop-types';
 
 const Column = ({ monthData, type, month }) => {
@@ -23,18 +24,15 @@ const Column = ({ monthData, type, month }) => {
   }, [monthData]);
 
   return (
-    <div className='column'
-    style={{ 
-      height: Math.abs(heights[type] * 10) || 0, 
-      bottom: heights[type] > 0 ? 'auto' : heights[type] * 10 || 0
-    }}      
+    <div 
+      className='column'
+      style={{ 
+        height: Math.abs(heights[type] * 10) || 0, 
+        bottom: heights[type] > 0 ? 'auto' : heights[type] * 10 || 0
+      }}      
       onMouseOver={() => setIsHover(true)} 
-      onMouseLeave={() => setIsHover(false)} >
-      {
-        isHover 
-          ? <div style={{position: 'absolute', top: -45, zIndex: 2}}>{`${month} ${heights[type].toFixed(2)}`}</div> 
-          : null
-      }
+      onMouseLeave={() => setIsHover(false)}>
+        <Label text={`${month} ${heights[type] && heights[type].toFixed(2)}`} visible={isHover}/>
     </div>
   );
 };
