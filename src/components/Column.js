@@ -12,9 +12,11 @@ const Column = ({ monthData, type, monthName }) => {
     const temperatures = monthData.map(item => Number(item.value));
     const halfOfLength = temperatures.length / 2;
     const average = temperatures.reduce((acc, item) => acc + item, 0) / temperatures.length;
+    
+    const sortedTemperatures = [...temperatures].sort((a, b) => a - b);
     const median = temperatures.length % 2 === 0 
-      ? (temperatures[halfOfLength] + temperatures[halfOfLength - 1]) / 2 
-      : temperatures[Math.floor(halfOfLength - 1)]
+      ? (sortedTemperatures[halfOfLength] + sortedTemperatures[halfOfLength - 1]) / 2 
+      : sortedTemperatures[Math.floor(halfOfLength - 1)]
 
     setHeights({
       [MIN]: Math.min(...temperatures),
